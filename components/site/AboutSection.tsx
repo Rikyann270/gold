@@ -1,115 +1,102 @@
-import { JV_DATA } from "@/data/jvData";
+"use client";
 
-const STATS = [
-  { value: "27+", label: "Years of intelligence" },
-  { value: "12", label: "Countries covered" },
-  { value: "240", label: "Million oz in reserves" },
-  { value: "11M", label: "Ounces produced annually" },
-];
+import Link from "next/link";
+import { ArrowRight, Factory, FileText, HandCoins, Info } from "lucide-react";
+import { Reveal, SectionHeading } from "@/components/site/Brand";
+import { ShardField } from "@/components/site/GoldBar3D";
 
-export function AboutSection() {
-  const totalReserves = JV_DATA.reduce((s, v) => s + v.provenReservesMoz, 0);
-  const totalProd = JV_DATA.reduce((s, v) => s + v.annualProductionOz, 0);
+interface AboutSectionProps {
+  /** Short version used on the home page, linking through to /about. */
+  teaser?: boolean;
+}
 
+const Arrow = () => <ArrowRight size={12} style={{ display: "inline", verticalAlign: "-1px" }} />;
+
+export function AboutSection({ teaser = false }: AboutSectionProps) {
   return (
-    <section className="section-dark section-gap">
-      <div className="container">
-        <div className="grid md:grid-cols-2 gap-16 items-start">
+    <section id="about" className="ab-section">
+      <div className="ab-aura ab-aura--l" />
+      <div className="ab-container">
+        <div className="ab-about">
+          <Reveal className="ab-about__art" y={0}>
+            <div className="ab-hero__glow" style={{ inset: "10% 4%" }} />
+            <ShardField />
+          </Reveal>
 
-          {/* Left — stats grid */}
-          <div>
-            <span className="section-eyebrow" style={{ color: "var(--color-accent)" }}>
-              Our Heritage
-            </span>
-            <h2
-              className="heading mt-3"
-              style={{
-                fontSize: "clamp(2rem, 4vw, 3rem)",
-                color: "#F3E7C5",
-                fontWeight: 300,
-              }}
-            >
-              Trusted Intelligence,
+          <div className="ab-about__copy">
+            <SectionHeading eyebrow="About Us">
+              The bridge between
               <br />
-              <em style={{ fontStyle: "italic", color: "var(--color-accent)" }}>
-                Since 1997
-              </em>
-            </h2>
+              refiners &amp; <span className="ab-gold-text">buyers</span>
+            </SectionHeading>
 
-            <div className="grid grid-cols-2 gap-6 mt-10">
-              {[
-                { val: "Est. 1997", lbl: "Established" },
-                { val: `${JV_DATA.length}`, lbl: "Ventures tracked" },
-                { val: `${(totalProd / 1e6).toFixed(1)}M oz`, lbl: "Annual production" },
-                { val: `${totalReserves.toFixed(0)} Moz`, lbl: "Proven Au reserves" },
-              ].map(({ val, lbl }) => (
-                <div
-                  key={lbl}
-                  className="py-5 px-1"
-                  style={{ borderTop: "1px solid rgba(243,231,197,0.15)" }}
-                >
-                  <div className="stat-value">{val}</div>
-                  <div className="stat-label">{lbl}</div>
-                </div>
-              ))}
-            </div>
-          </div>
+            <Reveal delay={0.1}>
+              <p>
+                <strong>AurumBridge Global</strong> is a gold brokerage and precious metals sourcing
+                house connecting international buyers, suppliers and refineries.
+              </p>
+              <p>
+                We source investment-grade gold bars from <strong>LBMA-accredited refiners</strong>,
+                verify every counterparty, and manage assay, settlement, insurance and logistics, so
+                every trade closes with certainty and a clean chain of custody.
+              </p>
+            </Reveal>
 
-          {/* Right — about text */}
-          <div
-            className="prose"
-            style={{
-              fontSize: "13px",
-              lineHeight: 1.9,
-              color: "rgba(243,231,197,0.75)",
-            }}
-          >
-            <p>
-              Headquartered at Plot 14 Lumumba Avenue, Nakasero, Kampala, GOLDEN was founded
-              in 1997 to bring institutional investment intelligence to the world's most
-              significant gold mining joint ventures. Situated at the crossroads of East Africa's
-              prolific mineral corridors, our Kampala desk combines local geological intimacy
-              with global financial scrutiny.
-            </p>
-            <p>
-              Our intelligence matrix tracks Uganda's transformative ventures — including the
-              Wagagai Busia complex and Karamoja Greenstone concessions — alongside tier-1
-              powerhouses such as Kibali, Nevada Gold Mines, and Grasberg, delivering audited
-              equity breakdowns, AISC metrics in UGX and USD, and operational reserve disclosures.
-            </p>
-            <p>
-              Whether analyzing state-partnered concessions with the Uganda National Mining
-              Corporation or multinational joint ventures on the NYSE and TSX, we serve sovereign
-              funds, institutional treasuries, and accredited private investors.
-            </p>
-
-            <div
-              className="mt-8 p-5"
-              style={{
-                border: "1px solid rgba(212,175,55,0.3)",
-                background: "rgba(212,175,55,0.05)",
-              }}
-            >
-              <blockquote
-                className="heading"
-                style={{
-                  fontSize: "1.15rem",
-                  fontWeight: 300,
-                  fontStyle: "italic",
-                  color: "#F3E7C5",
-                  lineHeight: 1.6,
-                }}
-              >
-                "Gold is the currency of last resort. Understanding who holds it, who mines
-                it, and who owns the rights — that is institutional intelligence."
-              </blockquote>
-              <div
-                className="label mt-4"
-                style={{ color: "var(--color-accent)", letterSpacing: "0.15em" }}
-              >
-                — GOLDEN Editorial Board, 2024
+            <Reveal delay={0.2}>
+              <div className="ab-about__cta">
+                {teaser ? (
+                  <>
+                    <Link href="/about" id="home-about-more" className="ab-pill">
+                      <span className="ab-pill__icon">
+                        <Info size={16} />
+                      </span>
+                      <span>
+                        <span className="ab-pill__small">Our story &amp; clients</span>
+                        <span className="ab-pill__big">
+                          Learn more <Arrow />
+                        </span>
+                      </span>
+                    </Link>
+                    <Link href="/contact" id="home-about-quote" className="ab-pill">
+                      <span className="ab-pill__icon">
+                        <FileText size={16} />
+                      </span>
+                      <span>
+                        <span className="ab-pill__small">Private OTC desk</span>
+                        <span className="ab-pill__big">
+                          Request a quote <Arrow />
+                        </span>
+                      </span>
+                    </Link>
+                  </>
+                ) : (
+                  <>
+                    <Link href="/contact?role=buyer" id="about-become-buyer" className="ab-pill">
+                      <span className="ab-pill__icon">
+                        <HandCoins size={16} />
+                      </span>
+                      <span>
+                        <span className="ab-pill__small">For investors &amp; traders</span>
+                        <span className="ab-pill__big">
+                          Become a buyer <Arrow />
+                        </span>
+                      </span>
+                    </Link>
+                    <Link href="/contact?role=supplier" id="about-become-supplier" className="ab-pill">
+                      <span className="ab-pill__icon">
+                        <Factory size={16} />
+                      </span>
+                      <span>
+                        <span className="ab-pill__small">For suppliers &amp; refineries</span>
+                        <span className="ab-pill__big">
+                          Become a supplier <Arrow />
+                        </span>
+                      </span>
+                    </Link>
+                  </>
+                )}
               </div>
-            </div>
+            </Reveal>
           </div>
         </div>
       </div>

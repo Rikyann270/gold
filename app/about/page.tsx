@@ -1,12 +1,41 @@
-import { Metadata } from "next";
-import { AboutPageContent } from "./AboutPageContent";
+import type { Metadata } from "next";
+import { PageShell } from "@/components/site/PageShell";
+import { PageHeader, CtaBand } from "@/components/site/PageParts";
+import { AboutSection } from "@/components/site/AboutSection";
+import { ClientsSection, AssuranceSection } from "@/components/site/TradeSections";
 
 export const metadata: Metadata = {
-  title: "About | GOLDEN — Fine Gold Ventures & Institutional Mining Intelligence",
+  title: "About | AurumBridge Global — Gold Brokerage & Precious Metals Sourcing",
   description:
-    "Founded in 1997 in Kampala, Uganda, GOLDEN delivers institutional-grade gold mining intelligence covering tier-1 joint ventures across East Africa and the world.",
+    "AurumBridge Global connects international buyers, suppliers and refineries with LBMA-accredited gold bars, backed by KYC / AML compliance, assay documentation and insured logistics.",
 };
 
 export default function AboutPage() {
-  return <AboutPageContent />;
+  return (
+    <PageShell>
+      <PageHeader
+        crumb="About"
+        eyebrow="About Us"
+        title={
+          <>
+            About <span className="ab-gold-text">AurumBridge</span>
+          </>
+        }
+        lead="A gold brokerage and precious metals sourcing house for international buyers, suppliers and refineries."
+      />
+      <AboutSection />
+      <ClientsSection />
+      <AssuranceSection />
+      <CtaBand
+        title={
+          <>
+            Let&apos;s build your next <span className="ab-gold-text">gold trade</span>
+          </>
+        }
+        text="Whether you are buying, supplying or placing refinery output, our desk is ready to talk."
+        primary={{ label: "Contact the desk", href: "/contact" }}
+        secondary={{ label: "Browse gold bars", href: "/gold-bars" }}
+      />
+    </PageShell>
+  );
 }

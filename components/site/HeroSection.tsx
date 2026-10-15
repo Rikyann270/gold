@@ -1,91 +1,86 @@
 "use client";
-import { ArrowRight } from "lucide-react";
 
-interface HeroSectionProps {
-  onExplore: () => void;
-}
+import Link from "next/link";
+import { ArrowRight, FileText, Layers } from "lucide-react";
+import { STATS } from "@/data/goldBarsData";
+import { HeroCube } from "@/components/site/GoldBar3D";
 
-export function HeroSection({ onExplore }: HeroSectionProps) {
+const DUST = [
+  { left: "12%", top: "22%", delay: "0s" },
+  { left: "78%", top: "14%", delay: "1.1s" },
+  { left: "88%", top: "48%", delay: "2.2s" },
+  { left: "20%", top: "70%", delay: "0.6s" },
+  { left: "64%", top: "82%", delay: "1.8s" },
+  { left: "40%", top: "10%", delay: "2.9s" },
+  { left: "6%", top: "46%", delay: "3.4s" },
+  { left: "52%", top: "58%", delay: "0.3s" },
+];
+
+export function HeroSection() {
   return (
-    <section className="relative w-full overflow-hidden" style={{ minHeight: "90vh" }}>
-      {/* Background image */}
-      <div className="absolute inset-0">
-        <img
-          src="/hero-mine.jpg"
-          alt="Aerial view of a tier-1 gold mine at golden hour"
-          className="w-full h-full object-cover"
-        />
-        <div
-          className="absolute inset-0"
-          style={{
-            background:
-              "linear-gradient(to right, rgba(11,31,59,0.72) 0%, rgba(11,31,59,0.4) 50%, rgba(11,31,59,0.2) 100%)",
-          }}
-        />
-      </div>
+    <section id="top" className="ab-hero" aria-labelledby="hero-title">
+      <div className="ab-aura ab-aura--l" style={{ top: "30%" }} />
+      <div className="ab-container">
+        <div className="ab-hero__grid">
+          <div>
+            <p className="ab-hero__kicker">Gold brokerage &amp; precious metals sourcing</p>
+            <h1 id="hero-title" className="ab-hero__title">
+              <span>Pure</span>
+              <span>
+                <b className="ab-gold-text" style={{ fontWeight: 600 }}>
+                  Gold
+                </b>{" "}
+                Bars
+              </span>
+            </h1>
+            <p className="ab-hero__copy">
+              LBMA-accredited gold bars from 1 g to 400 oz, sourced direct from the world&apos;s top
+              refiners and delivered insured to buyers, suppliers and refineries worldwide.
+            </p>
 
-      {/* Content */}
-      <div
-        className="container relative z-10 flex flex-col justify-end h-full"
-        style={{ minHeight: "90vh", paddingBottom: "5rem", paddingTop: "5rem" }}
-      >
-        <div className="max-w-xl fade-up">
-          <span className="label" style={{ color: "var(--color-accent)", letterSpacing: "0.25em" }}>
-            Established 1997 · Kampala Intelligence Desk
-          </span>
+            <div className="ab-hero__cta">
+              <Link href="/contact" id="hero-request-quote" className="ab-pill">
+                <span className="ab-pill__icon">
+                  <FileText size={16} />
+                </span>
+                <span>
+                  <span className="ab-pill__small">Private OTC desk</span>
+                  <span className="ab-pill__big">Request a quote</span>
+                </span>
+              </Link>
+              <Link href="/gold-bars" id="hero-view-bars" className="ab-pill">
+                <span className="ab-pill__icon">
+                  <Layers size={16} />
+                </span>
+                <span>
+                  <span className="ab-pill__small">1 g to 400 oz</span>
+                  <span className="ab-pill__big">
+                    View gold bars <ArrowRight size={12} style={{ display: "inline", verticalAlign: "-1px" }} />
+                  </span>
+                </span>
+              </Link>
+            </div>
 
-          <h1
-            className="heading hero-text-shadow mt-4"
-            style={{
-              fontSize: "clamp(2.5rem, 6vw, 4.5rem)",
-              fontWeight: 300,
-              color: "#F3E7C5",
-              lineHeight: 1.1,
-            }}
-          >
-            The World's Finest
-            <br />
-            <em style={{ fontStyle: "italic", color: "var(--color-accent)" }}>Gold Ventures</em>
-          </h1>
-
-          <p
-            className="mt-5 fade-up fade-up-delay-1"
-            style={{
-              fontSize: "14px",
-              color: "rgba(243,231,197,0.85)",
-              lineHeight: 1.8,
-              maxWidth: "420px",
-            }}
-          >
-            Handpicked tier-1 joint ventures, equity intelligence, and live UGX market data
-            — curated from Kampala for institutional investors and sovereign wealth funds.
-          </p>
-
-          <div className="flex flex-wrap gap-4 mt-8 fade-up fade-up-delay-2">
-            <button className="btn btn-gold" onClick={onExplore}>
-              Explore Ventures
-              <ArrowRight size={14} />
-            </button>
-            <button className="btn btn-ghost-light" onClick={onExplore}>
-              View Intelligence Matrix
-            </button>
+            <dl className="ab-stats">
+              {STATS.map((s) => (
+                <div key={s.label}>
+                  <dt className="ab-stat__value">{s.value}</dt>
+                  <dd className="ab-stat__label">{s.label}</dd>
+                </div>
+              ))}
+            </dl>
           </div>
-        </div>
 
-        {/* Scroll indicator */}
-        <div
-          className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 opacity-60"
-        >
-          <span className="label" style={{ color: "#F3E7C5", fontSize: "9px" }}>
-            Scroll
-          </span>
-          <div
-            className="w-px h-10 origin-top"
-            style={{
-              background: "linear-gradient(to bottom, rgba(243,231,197,0.8), transparent)",
-              animation: "fadeUp 1.5s ease infinite alternate",
-            }}
-          />
+          <div className="ab-hero__art" aria-hidden="true">
+            <div className="ab-hero__glow" />
+            <div className="ab-floor" />
+            <HeroCube />
+            <div className="ab-dust">
+              {DUST.map((d, i) => (
+                <i key={i} style={{ left: d.left, top: d.top, animationDelay: d.delay }} />
+              ))}
+            </div>
+          </div>
         </div>
       </div>
     </section>

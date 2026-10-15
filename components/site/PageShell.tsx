@@ -1,21 +1,19 @@
-"use client";
-
 import { SiteNav } from "@/components/site/SiteNav";
 import { SiteFooter } from "@/components/site/SiteFooter";
 
 interface PageShellProps {
   children: React.ReactNode;
+  background?: React.ReactNode;
 }
 
-export function PageShell({ children }: PageShellProps) {
+/** Shared frame for every page: dark nav, content, dark footer. */
+export function PageShell({ children, background }: PageShellProps) {
   return (
-    <>
-      <SiteNav
-        onOpenMatrix={() => (window.location.href = "/#matrix")}
-        onOpenCalculator={() => (window.location.href = "/#matrix")}
-      />
-      <main>{children}</main>
+    <div className="ab-page">
+      {background}
+      <SiteNav />
+      <main className="ab-page-main" style={{ position: "relative", zIndex: 1 }}>{children}</main>
       <SiteFooter />
-    </>
+    </div>
   );
 }
