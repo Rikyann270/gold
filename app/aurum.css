@@ -18,13 +18,15 @@
   --ab-faint: rgba(255, 255, 255, 0.4);
   --ab-gold-grad: linear-gradient(180deg, #fff6c4 0%, #f3d567 30%, #d4a72c 62%, #f6dc7d 100%);
   --ab-gold-grad-h: linear-gradient(100deg, #b8891c 0%, #f6dc7d 38%, #d4a72c 62%, #f3d567 100%);
-  --ab-font: var(--font-outfit), var(--font-jost), system-ui, sans-serif;
+  --ab-font-serif: var(--font-forum), Georgia, "Times New Roman", serif;
+  --ab-font-display: var(--font-funnel-display), var(--font-outfit), system-ui, sans-serif;
+  --ab-font: var(--font-funnel-display), var(--font-outfit), system-ui, sans-serif;
 }
 
 .ab-page {
   background: var(--ab-black);
   color: var(--ab-white);
-  font-family: var(--ab-font);
+  font-family: var(--ab-font-display);
   position: relative;
   overflow-x: clip;
 }
@@ -32,11 +34,15 @@
 .ab-page h2,
 .ab-page h3,
 .ab-page h4 {
-  font-family: var(--ab-font);
+  font-family: var(--ab-font-serif);
   color: var(--ab-white);
   line-height: 1.1;
+  letter-spacing: 0.02em;
 }
-.ab-page p { letter-spacing: 0.01em; }
+.ab-page p {
+  font-family: var(--ab-font-display);
+  letter-spacing: 0.01em;
+}
 
 /* ─── Layout primitives ───────────────────────────────────────────────── */
 .ab-container {
@@ -103,78 +109,126 @@
   font-weight: 300;
 }
 
-/* ─── Buttons ─────────────────────────────────────────────────────────── */
+/* ─── Buttons (Hero-inspired: solid white pill & dark glass pill with gold border) ───── */
 .ab-btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 0.6rem;
-  padding: 0.95rem 1.9rem;
-  border-radius: 999px;
-  border: 0;
-  font-family: var(--ab-font);
-  font-size: 12px;
-  font-weight: 600;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: #1a1203;
-  background: var(--ab-gold-grad-h);
-  background-size: 160% 100%;
-  box-shadow: 0 8px 30px rgba(212, 175, 55, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.55);
+  padding: 0.75rem 1.6rem;
+  border-radius: 9999px;
+  font-family: var(--ab-font-display);
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  color: #0a0a0a;
+  background: #ffffff;
+  border: 1px solid rgba(212, 175, 55, 0.65);
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.25), 0 0 12px rgba(212, 175, 55, 0.2);
   cursor: pointer;
-  transition: transform 0.25s ease, box-shadow 0.25s ease, background-position 0.5s ease;
+  transition: all 0.25s ease;
+  text-decoration: none;
 }
+
 .ab-btn:hover {
   transform: translateY(-2px);
-  background-position: 100% 0;
-  box-shadow: 0 14px 40px rgba(212, 175, 55, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.6);
+  background: #fbf6e2;
+  border-color: rgba(212, 175, 55, 0.95);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35), 0 0 16px rgba(212, 175, 55, 0.45);
+  color: #050505;
 }
-.ab-btn--sm { padding: 0.65rem 1.3rem; font-size: 11px; }
-.ab-btn--block { width: 100%; }
 
-/* Reference-style outlined pill with icon + two lines of text */
+.ab-btn--solid {
+  background: #ffffff;
+  color: #0a0a0a;
+  border: 1px solid rgba(212, 175, 55, 0.65);
+}
+
+.ab-btn--solid:hover {
+  background: #fbf6e2;
+  border-color: rgba(212, 175, 55, 0.95);
+  color: #050505;
+}
+
+.ab-btn--glass {
+  background: rgba(30, 30, 30, 0.65);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(212, 175, 55, 0.65);
+  color: #ffffff;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+.ab-btn--glass:hover {
+  background: rgba(45, 45, 45, 0.85);
+  border-color: rgba(212, 175, 55, 0.95);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4), 0 0 14px rgba(212, 175, 55, 0.35);
+  color: #ffffff;
+  transform: translateY(-2px);
+}
+
+.ab-btn--sm {
+  padding: 0.55rem 1.25rem;
+  font-size: 12px;
+}
+
+.ab-btn--block {
+  width: 100%;
+}
+
+/* Glass pill buttons with gold border */
 .ab-pill {
   display: inline-flex;
   align-items: center;
   gap: 0.85rem;
-  padding: 0.7rem 1.5rem 0.7rem 1rem;
-  border-radius: 999px;
-  border: 1px solid rgba(255, 255, 255, 0.28);
-  background: rgba(255, 255, 255, 0.03);
+  padding: 0.65rem 1.35rem 0.65rem 0.9rem;
+  border-radius: 9999px;
+  border: 1px solid rgba(212, 175, 55, 0.65);
+  background: rgba(30, 30, 30, 0.55);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   color: var(--ab-white);
   text-align: left;
   cursor: pointer;
-  transition: border-color 0.25s ease, background 0.25s ease, transform 0.25s ease;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  transition: all 0.25s ease;
+  text-decoration: none;
 }
+
 .ab-pill:hover {
-  border-color: var(--ab-gold);
-  background: rgba(212, 175, 55, 0.08);
+  border-color: rgba(212, 175, 55, 0.95);
+  background: rgba(45, 45, 45, 0.8);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35), 0 0 14px rgba(212, 175, 55, 0.35);
   transform: translateY(-2px);
 }
+
 .ab-pill__icon {
-  width: 34px;
-  height: 34px;
+  width: 32px;
+  height: 32px;
   border-radius: 50%;
   display: grid;
   place-items: center;
-  color: var(--ab-gold);
-  background: rgba(212, 175, 55, 0.12);
+  color: var(--ab-gold-light);
+  background: rgba(212, 175, 55, 0.16);
+  border: 1px solid rgba(212, 175, 55, 0.35);
   flex-shrink: 0;
 }
+
 .ab-pill__small {
   display: block;
-  font-size: 9px;
-  letter-spacing: 0.12em;
+  font-size: 10px;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--ab-faint);
+  color: rgba(255, 255, 255, 0.6);
   line-height: 1.2;
 }
+
 .ab-pill__big {
   display: block;
-  font-size: 12px;
-  font-weight: 600;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
+  font-size: 12.5px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  color: #ffffff;
   line-height: 1.3;
 }
 
@@ -287,7 +341,227 @@
 .ab-drawer__links { display: flex; flex-direction: column; gap: 1.4rem; margin-top: 0.5rem; }
 .ab-drawer__links .ab-nav__link { font-size: 14px; }
 
-/* ═══ Hero ═══════════════════════════════════════════════════════════════ */
+/* ═══ Hero (Cinematic Full-Bleed Video Background) ══════════════════════ */
+.ab-hero-cinematic {
+  position: relative;
+  overflow: hidden;
+  min-height: calc(100vh - 76px);
+  min-height: clamp(680px, 92vh, 960px);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: clamp(2.5rem, 5vw, 4.5rem) 0 clamp(2rem, 4vw, 3.5rem);
+}
+
+.ab-hero-cinematic__video-container {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.ab-hero-cinematic__video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  filter: contrast(1.08) brightness(0.92);
+  transform: scale(1.02);
+}
+
+/* Warm golden vignette & top-to-bottom atmospheric overlays matching the reference */
+.ab-hero-cinematic__vignette {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    circle at 50% 45%,
+    rgba(212, 175, 55, 0.08) 0%,
+    rgba(10, 8, 4, 0.45) 60%,
+    rgba(5, 5, 5, 0.85) 100%
+  );
+  pointer-events: none;
+}
+
+.ab-hero-cinematic__gradient {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(5, 5, 5, 0.55) 0%,
+    rgba(5, 5, 5, 0.12) 30%,
+    rgba(5, 5, 5, 0.25) 60%,
+    rgba(5, 5, 5, 0.95) 100%
+  );
+  pointer-events: none;
+}
+
+.ab-hero-cinematic__content {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 3.5rem;
+}
+
+/* Top Headline block */
+.ab-hero-cinematic__top {
+  max-width: 900px;
+}
+
+.ab-hero-cinematic__kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  font-family: var(--ab-font-display);
+  font-size: 13px;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.88);
+  letter-spacing: 0.02em;
+  margin-bottom: 1.5rem;
+}
+
+.ab-hero-cinematic__dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background-color: #ffffff;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+  display: inline-block;
+  flex-shrink: 0;
+}
+
+.ab-hero-cinematic__title {
+  font-family: var(--ab-font-serif);
+  font-size: clamp(2.8rem, 6.2vw, 5.4rem);
+  font-weight: 400;
+  line-height: 1.06;
+  letter-spacing: -0.01em;
+  color: #ffffff;
+  text-shadow: 0 4px 30px rgba(0, 0, 0, 0.7);
+}
+
+/* CTA buttons matching the reference: translucent glass button + solid pill button */
+.ab-hero-cinematic__actions {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 2.2rem;
+}
+
+.ab-hero-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.55rem;
+  padding: 0.75rem 1.55rem;
+  border-radius: 9999px;
+  font-family: var(--ab-font-display);
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  text-decoration: none;
+}
+
+.ab-hero-btn--glass {
+  background: rgba(30, 30, 30, 0.65);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(212, 175, 55, 0.65);
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+}
+
+.ab-hero-btn--glass:hover {
+  background: rgba(45, 45, 45, 0.85);
+  border-color: rgba(212, 175, 55, 0.95);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45), 0 0 16px rgba(212, 175, 55, 0.4);
+  transform: translateY(-2px);
+}
+
+.ab-hero-btn__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: rgba(212, 175, 55, 0.16);
+  border: 1px solid rgba(212, 175, 55, 0.35);
+  color: var(--ab-gold-light);
+}
+
+.ab-hero-btn--solid {
+  background: #ffffff;
+  border: 1px solid rgba(212, 175, 55, 0.65);
+  color: #0a0a0a;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.3), 0 0 12px rgba(212, 175, 55, 0.2);
+}
+
+.ab-hero-btn--solid:hover {
+  background: #fbf6e2;
+  border-color: rgba(212, 175, 55, 0.95);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4), 0 0 16px rgba(212, 175, 55, 0.45);
+  color: #050505;
+  transform: translateY(-2px);
+}
+
+/* Bottom summary block + brand insignia */
+.ab-hero-cinematic__bottom {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 3rem;
+  padding-top: 2rem;
+}
+
+.ab-hero-cinematic__summary {
+  max-width: 520px;
+}
+
+.ab-hero-cinematic__rule {
+  width: 100%;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.35);
+  margin-bottom: 1.1rem;
+}
+
+.ab-hero-cinematic__summary p {
+  font-family: var(--ab-font-display);
+  font-size: clamp(13px, 1.15vw, 15px);
+  line-height: 1.65;
+  color: rgba(255, 255, 255, 0.92);
+  font-weight: 400;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.8);
+}
+
+.ab-hero-cinematic__badge {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.35rem;
+  color: #ffffff;
+  opacity: 0.88;
+  flex-shrink: 0;
+}
+
+.ab-hero-cinematic__brand {
+  font-family: var(--ab-font-serif);
+  font-size: 11px;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+/* Fallback legacy hero styles */
 .ab-hero {
   position: relative;
   overflow: hidden;
@@ -703,7 +977,34 @@
   gap: clamp(2rem, 5vw, 5rem);
   align-items: center;
 }
-.ab-about__art { position: relative; height: clamp(340px, 46vw, 500px); }
+.ab-about__art {
+  position: relative;
+  height: clamp(380px, 46vw, 520px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.ab-about__img-wrap {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border: none;
+  background: transparent;
+  box-shadow: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.ab-about__img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.ab-about__img-wrap:hover .ab-about__img {
+  transform: scale(1.03);
+}
 .ab-about__copy p { color: var(--ab-muted); font-size: 14.5px; line-height: 1.9; font-weight: 300; margin-top: 1.1rem; max-width: 520px; }
 .ab-about__copy p strong { color: var(--ab-gold-light); font-weight: 500; }
 .ab-about__cta { margin-top: 2rem; display: flex; flex-wrap: wrap; gap: 0.9rem; }

@@ -1,26 +1,42 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, Factory, FileText, HandCoins, Info } from "lucide-react";
 import { Reveal, SectionHeading } from "@/components/site/Brand";
-import { ShardField } from "@/components/site/GoldBar3D";
 
 interface AboutSectionProps {
   /** Short version used on the home page, linking through to /about. */
   teaser?: boolean;
+  /** Image source override */
+  imageSrc?: string;
+  imageAlt?: string;
 }
 
 const Arrow = () => <ArrowRight size={12} style={{ display: "inline", verticalAlign: "-1px" }} />;
 
-export function AboutSection({ teaser = false }: AboutSectionProps) {
+export function AboutSection({
+  teaser = false,
+  imageSrc = "/ornament.jpg",
+  imageAlt = "Golden sculpture and craftsmanship",
+}: AboutSectionProps) {
   return (
     <section id="about" className="ab-section">
       <div className="ab-aura ab-aura--l" />
       <div className="ab-container">
         <div className="ab-about">
           <Reveal className="ab-about__art" y={0}>
-            <div className="ab-hero__glow" style={{ inset: "10% 4%" }} />
-            <ShardField />
+            <div className="ab-hero__glow" style={{ inset: "5% 10%", filter: "blur(50px)" }} />
+            <div className="ab-about__img-wrap">
+              <Image
+                src={imageSrc}
+                alt={imageAlt}
+                width={600}
+                height={800}
+                className="ab-about__img"
+                priority={false}
+              />
+            </div>
           </Reveal>
 
           <div className="ab-about__copy">

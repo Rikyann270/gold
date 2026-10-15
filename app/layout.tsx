@@ -1,10 +1,24 @@
 import type { Metadata } from "next";
-import { Fraunces, Jost, Outfit, Geist } from "next/font/google";
+import { Forum, Funnel_Display, Fraunces, Jost, Outfit, Geist } from "next/font/google";
 import "./globals.css";
 import "./aurum.css";
 import { cn } from "@/lib/utils";
 
-const geist = Geist({subsets:['latin'],variable:'--font-sans'});
+const geist = Geist({ subsets: ["latin"], variable: "--font-sans" });
+
+const forum = Forum({
+  weight: "400",
+  subsets: ["latin"],
+  variable: "--font-forum",
+  display: "swap",
+});
+
+const funnelDisplay = Funnel_Display({
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700", "800"],
+  variable: "--font-funnel-display",
+  display: "swap",
+});
 
 const fraunces = Fraunces({
   variable: "--font-fraunces",
@@ -39,8 +53,20 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className={cn(fraunces.variable, jost.variable, outfit.variable, "font-sans", geist.variable)}>
+    <html
+      lang="en"
+      className={cn(
+        forum.variable,
+        funnelDisplay.variable,
+        fraunces.variable,
+        jost.variable,
+        outfit.variable,
+        "font-sans",
+        geist.variable
+      )}
+    >
       <body>{children}</body>
     </html>
   );
 }
+

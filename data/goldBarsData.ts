@@ -10,6 +10,7 @@ export const BRAND = {
   suffix: "Global",
   tagline: "Gold brokerage & precious metals sourcing",
   email: "trade@aurumbridge.global",
+  phoneNumbers: ["0767033189", "0747742997"],
 };
 
 export const NAV_LINKS = [

@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Mail, ShieldCheck } from "lucide-react";
+import { Mail, Phone, ShieldCheck } from "lucide-react";
 import { BRAND, PRODUCTS } from "@/data/goldBarsData";
 import { Logo } from "@/components/site/Brand";
 
@@ -31,6 +31,12 @@ export function SiteFooter() {
               >
                 <Mail size={14} color="#d4af37" /> {BRAND.email}
               </a>
+              <div style={{ display: "inline-flex", alignItems: "center", gap: "0.6rem", fontSize: 13, color: "rgba(255,255,255,0.7)" }}>
+                <Phone size={14} color="#d4af37" />
+                <a href="tel:0767033189" style={{ color: "inherit" }}>0767033189</a>
+                <span style={{ opacity: 0.4 }}>/</span>
+                <a href="tel:0747742997" style={{ color: "inherit" }}>0747742997</a>
+              </div>
               <span style={{ display: "inline-flex", alignItems: "center", gap: "0.6rem", fontSize: 13, color: "rgba(255,255,255,0.5)" }}>
                 <ShieldCheck size={14} color="#d4af37" /> KYC / AML-verified trading only
               </span>

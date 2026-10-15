@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Check, Mail, ShieldCheck, Clock } from "lucide-react";
+import { Check, Mail, Phone, ShieldCheck, Clock } from "lucide-react";
 import {
   BRAND,
   CLIENT_ROLES,
@@ -53,6 +53,16 @@ export function QuoteSection({ initialProduct = PRODUCTS[0].id, initialRole = "B
                     <Mail size={16} />
                   </span>
                   <a href={`mailto:${BRAND.email}`}>{BRAND.email}</a>
+                </li>
+                <li>
+                  <span className="ab-contact__icon">
+                    <Phone size={16} />
+                  </span>
+                  <div style={{ display: "flex", flexWrap: "wrap", alignItems: "center", gap: "0.5rem" }}>
+                    <a href="tel:0767033189">0767033189</a>
+                    <span style={{ opacity: 0.4 }}>·</span>
+                    <a href="tel:0747742997">0747742997</a>
+                  </div>
                 </li>
                 <li>
                   <span className="ab-contact__icon">

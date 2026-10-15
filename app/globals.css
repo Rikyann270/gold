@@ -85,7 +85,7 @@ html { scroll-behavior: smooth; }
 body {
   background-color: var(--bg-body);
   color: var(--color-body);
-  font-family: var(--font-jost), sans-serif;
+  font-family: var(--font-funnel-display), var(--font-jost), sans-serif;
   font-weight: 400;
   font-size: 14px;
   letter-spacing: var(--font-body-ls);
@@ -95,8 +95,8 @@ body {
 
 h1, h2, h3, h4, h5, h6,
 .heading {
-  font-family: var(--font-fraunces), serif;
-  font-weight: 300;
+  font-family: var(--font-forum), var(--font-fraunces), serif;
+  font-weight: 400;
   letter-spacing: var(--font-heading-ls);
   line-height: 1.15;
   color: var(--color-heading);

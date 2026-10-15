@@ -23,7 +23,7 @@ export default function AboutPage() {
         }
         lead="A gold brokerage and precious metals sourcing house for international buyers, suppliers and refineries."
       />
-      <AboutSection />
+      <AboutSection imageSrc="/gold_hand.jpg" imageAlt="Gold hand holding investment gold" />
       <ClientsSection />
       <AssuranceSection />
       <CtaBand
