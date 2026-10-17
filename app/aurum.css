@@ -1108,17 +1108,45 @@
 .ab-assure__text { margin-top: 0.6rem; color: var(--ab-muted); font-size: 13.5px; line-height: 1.75; font-weight: 300; }
 
 /* ═══ Testimonials ═══════════════════════════════════════════════════════ */
+.ab-testimonials-card {
+  position: relative;
+  border-radius: 28px;
+  background: radial-gradient(circle at 50% 0%, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.02) 70%), #1f232b;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 24px 60px -15px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.15);
+  padding: clamp(2.5rem, 6vw, 4.5rem) clamp(1.5rem, 4vw, 3.5rem);
+  overflow: hidden;
+}
+
+.ab-testimonials-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 15%;
+  right: 15%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.5), transparent);
+}
+
 .ab-quote {
   display: flex;
   flex-direction: column;
   gap: 1.2rem;
   padding: 1.6rem;
-  border: 1px solid rgba(212, 175, 55, 0.3);
-  border-radius: 6px;
-  background: linear-gradient(160deg, rgba(212, 175, 55, 0.05), rgba(255, 255, 255, 0.01));
-  transition: border-color 0.3s ease, transform 0.3s ease;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  background: rgba(15, 17, 21, 0.65);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+  transition: all 0.3s ease;
 }
-.ab-quote:hover { border-color: var(--ab-gold); transform: translateY(-4px); }
+.ab-quote:hover { 
+  border-color: rgba(212, 175, 55, 0.6); 
+  transform: translateY(-4px); 
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.35), 0 0 20px rgba(212, 175, 55, 0.1);
+  background: rgba(18, 21, 26, 0.85);
+}
 .ab-quote__head { display: flex; align-items: center; gap: 0.9rem; }
 .ab-avatar {
   width: 52px;
@@ -1245,6 +1273,29 @@ textarea.ab-input { resize: vertical; min-height: 96px; }
 .ab-footer__links { list-style: none; display: grid; gap: 0.8rem; }
 .ab-footer__links a { font-size: 13px; color: rgba(255, 255, 255, 0.62); transition: color 0.2s ease, padding-left 0.2s ease; font-weight: 300; }
 .ab-footer__links a:hover { color: var(--ab-gold-light); padding-left: 4px; }
+.ab-footer__whatsapp-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  margin-top: 0.25rem;
+  padding: 0.45rem 0.9rem;
+  border-radius: 4px;
+  background: rgba(37, 211, 102, 0.1);
+  border: 1px solid rgba(37, 211, 102, 0.3);
+  color: #25D366;
+  font-size: 12.5px;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  width: fit-content;
+  transition: all 0.2s ease;
+  text-decoration: none;
+}
+.ab-footer__whatsapp-btn:hover {
+  background: rgba(37, 211, 102, 0.2);
+  border-color: #25D366;
+  color: #2ee872;
+  transform: translateY(-1px);
+}
 .ab-footer__mega {
   text-align: center;
   font-size: clamp(2.8rem, 12.5vw, 11rem);

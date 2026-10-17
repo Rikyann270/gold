@@ -11,6 +11,11 @@ export const BRAND = {
   tagline: "Gold brokerage & precious metals sourcing",
   email: "trade@aurumbridge.global",
   phoneNumbers: ["0767033189", "0747742997"],
+  whatsappUrl: "https://wa.me/254767033189",
+  whatsappNumbers: [
+    { number: "0767033189", url: "https://wa.me/254767033189" },
+    { number: "0747742997", url: "https://wa.me/254747742997" },
+  ],
 };
 
 export const NAV_LINKS = [
