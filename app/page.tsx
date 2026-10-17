@@ -1,6 +1,7 @@
 import { PageShell } from "@/components/site/PageShell";
 import { HeroSection } from "@/components/site/HeroSection";
 import { RefinersMarquee } from "@/components/site/RefinersMarquee";
+import { GoldenSlidesSection } from "@/components/site/GoldenSlidesSection";
 import { ProductsPreview } from "@/components/site/ProductsPreview";
 import { AboutSection } from "@/components/site/AboutSection";
 import { TestimonialsSection } from "@/components/site/TestimonialsSection";
@@ -27,6 +28,7 @@ export default function Home() {
     >
       <HeroSection />
       <RefinersMarquee />
+      <GoldenSlidesSection />
       <ProductsPreview />
       <AboutSection teaser />
       <TestimonialsSection />
